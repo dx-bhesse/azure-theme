@@ -9,14 +9,14 @@
 [{assign var="currency_sign" value=$currency->sign}]
 [{assign var="message_vars" value='|del|'|explode:"$shop_name|del|$bid_price|del|$currency_sign"}]
 [{assign var="_statusMessage" value="PRICE_ALERT_THANK_YOU_MESSAGE"|oxmultilangassign:$message_vars}]
-[{include file="message/success.tpl" statusMessage=`$_statusMessage`}]
+[{include file="message/success.tpl" statusMessage=$_statusMessage}]
 [{elseif $oView->getPriceAlarmStatus() == 2}]
 [{assign var="_statusMessage" value="MESSAGE_WRONG_VERIFICATION_CODE"|oxmultilangassign}]
 [{include file="message/error.tpl" statusMessage=$_statusMessage}]
 [{elseif $oView->getPriceAlarmStatus() === 0}]
 [{assign var="_statusMessage1" value="MESSAGE_NOT_ABLE_TO_SEND_EMAIL"|oxmultilangassign|cat:"<br> "}]
 [{assign var="_statusMessage2" value="MESSAGE_VERIFY_YOUR_EMAIL"|oxmultilangassign}]
-[{include file="message/error.tpl" statusMessage=`$_statusMessage1``$_statusMessage2`}]
+[{include file="message/error.tpl" statusMessage=$_statusMessage1.$_statusMessage2}]
 [{/if}]
 
 <div id="details">

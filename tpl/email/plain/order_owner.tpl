@@ -90,7 +90,7 @@
 [{/if}]
 [{block name="email_plain_order_ownerdiscounts"}]
   [{foreach from=$basket->getDiscounts() item=oDiscount}]
-  [{if $oDiscount->dDiscount < 0}][{oxmultilang ident="SURCHARGE"}][{else}][{oxmultilang ident="DISCOUNT"}][{/if}] [{$oDiscount->sDiscount suffix="COLON"}] [{if $oDiscount->dDiscount < 0}][{$oDiscount->fDiscount|replace:"-":""}][{else}]-[{$oDiscount->fDiscount}][{/if}] [{$currency->name}]
+  [{if $oDiscount->dDiscount < 0}][{oxmultilang ident="SURCHARGE"}][{else}][{oxmultilang ident="DISCOUNT"}][{/if}] [{$oDiscount->sDiscount}] [{oxmultilang ident="COLON"}] [{if $oDiscount->dDiscount < 0}][{$oDiscount->fDiscount|replace:"-":""}][{else}]-[{$oDiscount->fDiscount}][{/if}] [{$currency->name}]
   [{/foreach}]
 [{/block}]
 [{if !$order->isNettoMode()}]
